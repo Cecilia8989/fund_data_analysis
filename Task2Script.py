@@ -23,15 +23,28 @@ df.info()
 # Generate summary statistics of the DataFrame
 df.describe()
 
-# checking missing value 
+# Define a function to check missing value 
 #https://dzone.com/articles/pandas-dataframe-functionsplaying-with-multiple-da
-# count the number of missing value
-missing_value_count = df.isnull().sum()
-# calculate the percentage on the total
-#https://stackoverflow.com/questions/67922276/convert-pandas-dataframe-values-to-percentage#comment120055288_67922371
-percentage_missing_value = (100 * df.isnull().sum() / len(df)).round(0).astype(int).astype(str) + '%'
-#Create the table 
-missing_values_table = pd.concat([missing_value_count, percentage_missing_value], axis=1)
-# assign columns name 
-missing_values_table.columns = ["Missing Values", "Percentage Missing"]
-print(missing_values_table)
+def missing_value_summary(df):
+    # count the number of missing value
+    missing_value_count = df.isnull().sum()
+    # calculate the percentage on the total
+    #https://stackoverflow.com/questions/67922276/convert-pandas-dataframe-values-to-percentage#comment120055288_67922371
+    percentage_missing_value = (100 * df.isnull().sum() / len(df)).round(0).astype(int).astype(str) + '%'
+    #Create the table 
+    missing_values_table = pd.concat([missing_value_count, percentage_missing_value], axis=1)
+    # assign columns name 
+    missing_values_table.columns = ["Missing Values", "Percentage Missing"]
+    # return the missing value table 
+    return missing_values_table
+#print(df[df.isnull().any(axis=1)])
+
+# handling missing value 
+# Import the SimpleImputer class from scikit-learn's impute module
+from sklearn.impute import SimpleImputer
+# Create an instance of SimpleImputer with the 'most_frequent' strategy
+imputer = SimpleImputer(strategy='most_frequent')
+# Use the imputer to fill missing values in the DataFrame 'df'
+df.iloc[:,:] = imputer.fit_transform(df)
+
+print(missing_value_summary(df))
