@@ -47,4 +47,40 @@ imputer = SimpleImputer(strategy='most_frequent')
 # Use the imputer to fill missing values in the DataFrame 'df'
 df.iloc[:,:] = imputer.fit_transform(df)
 
-print(missing_value_summary(df))
+
+# Count the occurrences of each unique value in the 'Species' column
+#https://www.datacamp.com/tutorial/categorical-data
+count_species = df[['Species']].value_counts()
+# Calculate the normalized counts, round them to two decimal places, convert to integers,
+# and add '%' to represent them as percentages
+#https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html
+normalize_species = (df[['Species']].value_counts(normalize=True).round(2)*100).astype(int).astype(str) + '%'
+# Concatenate the 'count_species' and 'normalize_species' Series into a DataFrame
+species_table = pd.concat([count_species, normalize_species], axis=1)
+# Rename the columns to 'Count' and '%'
+species_table.columns = ['Count', '%']
+
+# Count the occurrences of each unique value in the 'Island' column
+count_islands = df[['Island']].value_counts()
+# Calculate the normalized counts, round them to two decimal places, convert to integers,
+# and add '%' to represent them as percentages
+normalize_islands = (df[['Island']].value_counts(normalize=True).round(2)*100).astype(int).astype(str) + '%'
+# Concatenate the 'count_species' and 'normalize_species' Series into a DataFrame
+islands_table = pd.concat([count_islands, normalize_islands], axis=1)
+# Rename the columns to 'Count' and '%'
+islands_table.columns = ['Count', '%']
+
+
+# Count the occurrences of each unique value in the 'Island' column
+count_sex = df[['Sex']].value_counts()
+# Calculate the normalized counts, round them to two decimal places, convert to integers,
+# and add '%' to represent them as percentages
+normalize_sex = (df[['Sex']].value_counts(normalize=True).round(2)*100).astype(int).astype(str) + '%'
+# Concatenate the 'count_species' and 'normalize_species' Series into a DataFrame
+sex_table = pd.concat([count_sex, normalize_sex], axis=1)
+# Rename the columns to 'Count' and '%'
+sex_table.columns = ['Count', '%']
+
+# Generate descriptive statistics on Numerical - continuos - ratio variables 
+# https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
+df.describe().round(2)
