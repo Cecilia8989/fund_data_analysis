@@ -95,7 +95,7 @@ and for what analysis they can be used.
 
 
 # sex - categorical - nominal variable with 2 possible outputs: male and female
-# Th Numpy randon binominal distribution is hte one that better apply
+# The Numpy randon binominal distribution is hte one that better apply
 #https://www.kaggle.com/code/abdelrhmaneltawagny/apply-probability-distributions-in-real-data
 #https://benhay.es/posts/exploring-distributions/
 #https://www.w3schools.com/python/numpy/numpy_random_binomial.asp
@@ -162,9 +162,9 @@ ax.set_ylabel("Frequency")
 
 plt.show()
 
+# Species variables
+# The distributions that apply are the choice and the Multinomial
 #https://stackoverflow.com/questions/37818063/how-to-calculate-conditional-probability-of-values-in-dataframe-pandas-python
-import pandas as pd
-import numpy as np
 
 # Create a choice Distribution 
 #https://medium.com/@brandon93.w/converting-categorical-data-into-numerical-form-a-practical-guide-for-data-science-99fdf42d0e10
@@ -197,7 +197,7 @@ plt.show()
 
 # Create a Multinomial distribution 
 
-multinomial_distribution = np.random.multinomial(n=1, pvals=g.values, size=1000 )
+multinomial_distribution = np.random.multinomial(n=6, pvals=g.values, size=1000 )
 
 
 # Create a bar plot to visualize the distribution
@@ -215,6 +215,39 @@ ax.set_title('Multinomial Distribution')
 sample_size = len(multinomial_distribution)
 for m in ax.patches:
     ax.annotate(f'\n{(m.get_height() / sample_size) * 100:.1f}%', (m.get_x() + 0.4, m.get_height()), ha='center', va='top', color='white', size=12)
-
 plt.show()
 
+# Perform the Kolmogorov-Smirnov Test to verify the variables can be rapresented by a normal disstribution 
+
+print(df["Bill_Length(mm)"])
+
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import scipy.stats as stats
+
+# Create a Q-Q plot
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+stats.probplot(df["Body_Mass(g)"], dist="norm", plot=plt)
+plt.title("Q-Q Plot")
+plt.xlabel("Theoretical Quantiles")
+plt.ylabel("Sample Quantiles")
+
+# Create a histogram
+plt.subplot(1, 2, 2)
+plt.hist(df["Body_Mass(g)"], bins=200, edgecolor='k', density=True, alpha=0.7)
+plt.title("Histogram")
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+
+plt.tight_layout()
+plt.show()
+
+statistic, p_value = stats.shapiro(df["Body_Mass(g)"])
+alpha = 0.05 
+if p_value > alpha:
+    print("The data appears to be normally distributed (fail to reject H0)")
+else:
+    print("The data does not appear to be normally distributed")
