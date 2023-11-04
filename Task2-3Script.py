@@ -200,23 +200,6 @@ plt.show()
 multinomial_distribution = np.random.multinomial(n=6, pvals=g.values, size=1000 )
 
 
-# Create a bar plot to visualize the distribution
-
-plt.figure(figsize=(7, 6))
-ax = sns.countplot(x=multinomial_distribution.argmax(axis=1), palette="Set2", dodge=False)
-
-# Set plot title and labels
-ax.set_xlabel('Species')
-ax.set_xticklabels(['Adelie', 'Chinstrap', 'Gentoo'])
-ax.set_ylabel('Count')
-ax.set_title('Multinomial Distribution')
-
-# Annotate the countplot with percentages
-sample_size = len(multinomial_distribution)
-for m in ax.patches:
-    ax.annotate(f'\n{(m.get_height() / sample_size) * 100:.1f}%', (m.get_x() + 0.4, m.get_height()), ha='center', va='top', color='white', size=12)
-plt.show()
-
 # Perform the Kolmogorov-Smirnov Test to verify the variables can be rapresented by a normal disstribution 
 
 print(df["Bill_Length(mm)"])
