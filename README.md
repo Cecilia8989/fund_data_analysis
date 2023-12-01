@@ -8,7 +8,7 @@
   <img src=https://content.presspage.com/uploads/722/1920_almosthalfstatdv-copy.png?10000>
 </p>
 <div>
-  <p align="center"><a href="https://news.hackney.gov.uk/end-violence-against-women-and-girls-in-hackney/"><i>End violence against women and girls</i></a></center>
+  <p align="center"><a href="https://news.hackney.gov.uk/end-violence-against-women-and-girls-in-hackney/"><i>[Fig.1 End violence against women and girls]</i></a></center>
 </div>
 
 ## Description
