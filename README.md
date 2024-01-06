@@ -65,7 +65,7 @@ This project have been writen using python 3.11.4 and structurate in a Jupyter n
 ```python
 pip install notebook
 ```
-3. I advice also to install a specific extension of jupyter notebook need also been installed: [jupyter-contrib-nbextensions []](https://pypi.org/project/jupyter-contrib-nbextensions/). This can be done typing on the terminal:
+3. I advice also to install a specific extension of jupyter notebook: [jupyter-contrib-nbextensions ](https://pypi.org/project/jupyter-contrib-nbextensions/). This can be done typing on the terminal:
 
 ```python
 pip install jupyter_contrib_nbextensions
@@ -103,4 +103,4 @@ pip install io
 ```python
 jupyter notebook
 ```
-----
+---
