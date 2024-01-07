@@ -88,7 +88,8 @@ The library needed are:
 To install them you can use pip install in a terminal, or command prompt, followed by the librarys:
 
 ```python
-pip install pandas 
+pip install pandas
+pip install numpy
 pip install matplotlib 
 pip install seaborn
 pip install plotly
