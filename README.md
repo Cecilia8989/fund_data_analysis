@@ -71,7 +71,7 @@ pip install notebook
 pip install jupyter_contrib_nbextensions
 ```
 
-3. Install the  needed libraries.
+4. Install the  needed libraries.
 
 The script use several python package and library and those need to be installed on the system.
 
@@ -97,9 +97,9 @@ pip install scikit-learn
 pip install scipy
 pip install io
 ```
-4. Clone the repository in a local machine using [git clone](https://robots.net/how-to-guide/how-to-download-a-github-repository/).
+5. Clone the repository in a local machine using [git clone](https://robots.net/how-to-guide/how-to-download-a-github-repository/).
 
-5. Open the files **tasks.ipynb**/**project.ipynb** in VS Code or, in a terminal, navigate to the directory where the file is saved and run jupyter notebook with the following code:
+6. Open the files **tasks.ipynb**/**project.ipynb** in VS Code or, in a terminal, navigate to the directory where the file is saved and run jupyter notebook with the following code:
 
 ```python
 jupyter notebook
